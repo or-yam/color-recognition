@@ -7,7 +7,8 @@ import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
-import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import ColorRecognition from './components/ColorRecognition/ColorRecognition';
+import ColorsOutput from './components/ColorsOutput/ColorsOutput';
 
 const app = new Clarifai.App({
   apiKey: 'b23840034d974b6cbb3754006c99f90b',
@@ -77,18 +78,34 @@ class App extends Component {
     this.state = {
       input: '',
       imageUrl: '',
+      colors: [],
     };
   }
+
+  calculateColors = (data) => {
+    const clarifaiColors = data.outputs[0].data.colors;
+    let colorList = [];
+    for (let i = 0; i < clarifaiColors.length; i++) {
+      let color = [
+        clarifaiColors[i].w3c.hex,
+        clarifaiColors[i].w3c.name,
+        clarifaiColors[i].value,
+      ];
+      colorList.push(color);
+    }
+    return colorList;
+  };
+
+  displayColors = (colors) => {
+    this.setState({ colors: colors });
+  };
+
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    app.models.predict(Clarifai.COLOR_MODEL, this.state.input).then(
-      function (response) {
-        console.log(response.outputs[0].data.colors);
-      },
-      function (err) {
-        console.log(err);
-      }
-    );
+    app.models
+      .predict(Clarifai.COLOR_MODEL, this.state.input)
+      .then((response) => this.displayColors(this.calculateColors(response)))
+      .catch((err) => console.log(err));
   };
 
   onInputChange = (event) => {
@@ -106,7 +123,8 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        <FaceRecognition imageUrl={this.state.imageUrl} />
+        <ColorRecognition imageUrl={this.state.imageUrl} />
+        <ColorsOutput colors={this.state.colors} />
       </div>
     );
   }
