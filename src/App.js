@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
 import Clarifai from 'clarifai';
-
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import ColorRecognition from './components/ColorRecognition/ColorRecognition';
-import ColorsOutput from './components/ColorsOutput/ColorsOutput';
+import ColorsList from './components/ColorsList/ColorsList';
 
 const app = new Clarifai.App({
   apiKey: 'b23840034d974b6cbb3754006c99f90b',
@@ -93,6 +92,7 @@ class App extends Component {
       ];
       colorList.push(color);
     }
+    console.log(colorList);
     return colorList;
   };
 
@@ -123,8 +123,11 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        <ColorRecognition imageUrl={this.state.imageUrl} />
-        <ColorsOutput colors={this.state.colors} />
+        <ColorRecognition
+          className="flex flex-column"
+          imageUrl={this.state.imageUrl}
+        />
+        <ColorsList colors={this.state.colors} />
       </div>
     );
   }
