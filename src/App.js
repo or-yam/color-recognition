@@ -123,11 +123,10 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        <ColorRecognition
-          className="flex flex-column"
-          imageUrl={this.state.imageUrl}
-        />
-        <ColorsList colors={this.state.colors} />
+        <div>
+          <ColorRecognition imageUrl={this.state.imageUrl} />
+          <ColorsList colors={this.state.colors} />
+        </div>
       </div>
     );
   }

@@ -1,18 +1,10 @@
 import React from 'react';
 
-const FaceRecognition = ({ imageUrl }) => {
+const ColorRecognition = ({ imageUrl }) => {
   return (
-    <div className="center ma">
-      <div className="  absolute mt2 ">
-        <img
-          id="inputImage"
-          width="500px"
-          height="auto"
-          alt=""
-          src={imageUrl}
-        />
-      </div>
+    <div className="center ma mt2">
+      <img id="inputImage" width="500px" height="auto" alt="" src={imageUrl} />
     </div>
   );
 };
-export default FaceRecognition;
+export default ColorRecognition;

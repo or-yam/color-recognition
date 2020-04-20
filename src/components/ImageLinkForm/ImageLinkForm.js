@@ -4,7 +4,9 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     <div className="">
       <p className="f3 white">
-        {'Entre here Your Image link and it will mark the faces in it'}
+        {
+          'Entre here an image address link, so it will recognize the colors in it'
+        }
       </p>
       <div className="center">
         <div className="center form pa4 br3 shadow-5">

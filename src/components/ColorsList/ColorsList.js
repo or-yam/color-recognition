@@ -10,7 +10,7 @@ const ColorsList = ({ colors }) => {
             key={i}
             demo={colors[i][0]}
             hex={`Hex- ${colors[i][0].toUpperCase()}`}
-            name={`Color- ${colors[i][1].match(/[A-Z][a-z]+/g).join(' ')}`}
+            name={`${colors[i][1].match(/[A-Z][a-z]+/g).join(' ')}`}
             amount={`Amount- ${(colors[i][2] * 100).toFixed([2])}%`}
           />
         );
