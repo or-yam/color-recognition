@@ -8,6 +8,8 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import ColorRecognition from './components/ColorRecognition/ColorRecognition';
 import ColorsList from './components/ColorsList/ColorsList';
+import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
 
 const app = new Clarifai.App({
   apiKey: 'b23840034d974b6cbb3754006c99f90b',
@@ -78,6 +80,8 @@ class App extends Component {
       input: '',
       imageUrl: '',
       colors: [],
+      route: 'signin',
+      isSignedIn: false,
     };
   }
 
@@ -92,7 +96,6 @@ class App extends Component {
       ];
       colorList.push(color);
     }
-    console.log(colorList);
     return colorList;
   };
 
@@ -112,21 +115,43 @@ class App extends Component {
     this.setState({ input: event.target.value });
   };
 
+  onRouteChange = (route) => {
+    if (route === 'signout') {
+      this.setState({ isSignedIn: false });
+    } else if (route === 'home') {
+      this.setState({ isSignedIn: true });
+    }
+    this.setState({ route: route });
+  };
+
   render() {
+    const { isSignedIn, route, imageUrl, colors } = this.state;
     return (
       <div className="App">
         <Particles className="particles" params={particlesParameters} />
-        <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm
-          onInputChange={this.onInputChange}
-          onButtonSubmit={this.onButtonSubmit}
+        <Navigation
+          isSignedIn={isSignedIn}
+          onRouteChange={this.onRouteChange}
+          route={route}
         />
-        <div>
-          <ColorRecognition imageUrl={this.state.imageUrl} />
-          <ColorsList colors={this.state.colors} />
-        </div>
+        <Logo />
+        {route === 'home' ? (
+          <div>
+            <Rank />
+            <ImageLinkForm
+              onInputChange={this.onInputChange}
+              onButtonSubmit={this.onButtonSubmit}
+            />
+            <div>
+              <ColorRecognition imageUrl={imageUrl} />
+              <ColorsList colors={colors} />
+            </div>
+          </div>
+        ) : route === 'signin' ? (
+          <Signin onRouteChange={this.onRouteChange} />
+        ) : (
+          <Register onRouteChange={this.onRouteChange} />
+        )}
       </div>
     );
   }
