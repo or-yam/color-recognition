@@ -31,7 +31,7 @@ class Signin extends React.Component {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange('home');
-        }
+        } // else ... display text user already exist
       });
   };
 
@@ -65,6 +65,7 @@ class Signin extends React.Component {
                   </label>
                   <input
                     onChange={this.onPasswordChange}
+                    onKeyPress={this.onSubmitSignin}
                     className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                     type="password"
                     name="password"
