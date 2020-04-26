@@ -1,11 +1,11 @@
 import React from 'react';
-import Tilt from 'react-tilt';
-import './Logo.css';
-import logo from './logo.png';
+// import Tilt from 'react-tilt';
+// import './Logo.css';
+// import logo from './logo.png';
 const Logo = () => {
   return (
     <div className="ma4 mt0">
-      <Tilt
+      {/* <Tilt
         className="Tilt br3-white shadow-3"
         options={{
           reverse: false,
@@ -22,7 +22,7 @@ const Logo = () => {
         <div className="Tilt-inner pa4">
           <img alt="logo" src={logo} />
         </div>
-      </Tilt>
+      </Tilt> */}
     </div>
   );
 };
