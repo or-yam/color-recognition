@@ -6,7 +6,7 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <p
           onClick={() => onRouteChange('signout')}
-          className="ma3 f3 link dim white pa3 pointer"
+          className="b ph3 pv2 input-reset ba b--black bg-orange grow pointer f5 dib br4 near-white f1"
         >
           Sign Out
         </p>
@@ -15,12 +15,7 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
   } else if (isSignedIn === false && route === 'signin') {
     return (
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <p
-          onClick={() => onRouteChange('register')}
-          className="ma3 f3 link dim white pa3 pointer"
-        >
-          Register
-        </p>
+        <p className="f2 fw6 ph0 mh0 white">Color Identify App</p>
       </nav>
     );
   } else {
@@ -28,9 +23,9 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <p
           onClick={() => onRouteChange('signin')}
-          className="ma3 f3 link dim white pa3 pointer"
+          className="b ph3 pv2 input-reset ba b--black bg-blue grow pointer f5 dib br4 near-white f1"
         >
-          Sign In
+          Back To Sign In
         </p>
       </nav>
     );

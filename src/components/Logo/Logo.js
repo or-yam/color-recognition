@@ -1,10 +1,16 @@
 import React from 'react';
 // import Tilt from 'react-tilt';
-// import './Logo.css';
-// import logo from './logo.png';
+import './Logo.css';
+import logo from './logo.png';
 const Logo = () => {
   return (
-    <div className="ma4 mt0">
+    <div className="ma4 mt0"   style={{ display: 'flex', justifyContent: 'flex-start', height: "120px", width:"120px" }}>
+      <div className="logo br3 shadow-4"  style={{ height: "120px", width:"120px" }}>
+        <div className="pa4">
+          <img alt="logo" src={logo} />
+        </div>
+      </div>
+      
       {/* <Tilt
         className="Tilt br3-white shadow-3"
         options={{

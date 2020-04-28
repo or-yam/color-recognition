@@ -31,7 +31,9 @@ class Signin extends React.Component {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange('home');
-        } // else ... display text user already exist
+        } else {
+          ////
+        }
       });
   };
 
@@ -85,9 +87,9 @@ class Signin extends React.Component {
                 <p
                   onClick={() => onRouteChange('register')}
                   href="#0"
-                  className="f6 link dim black db blue pointer "
+                  className="b ph3 pv2 input-reset ba b--black bg-blue grow pointer f6 dib br4 near-white f1 "
                 >
-                  Register
+                  Register As New User
                 </p>
               </div>
             </div>
