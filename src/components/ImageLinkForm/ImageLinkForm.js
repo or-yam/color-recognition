@@ -4,9 +4,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     <div className="">
       <p className="f3 white">
-        {
-          'Entre here URL of an Image, And it will identify the colors in it'
-        }
+        {'Entre here an Image URL, And it will identify the colors in it'}
       </p>
       <div className="center">
         <div className="center form pa4 br3 shadow-5">

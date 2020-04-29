@@ -8,7 +8,7 @@ class Signin extends React.Component {
       signinPassword: '',
     };
   }
-
+ 
   onEmailChange = (event) => {
     this.setState({ signinEmail: event.target.value });
   };
@@ -32,7 +32,7 @@ class Signin extends React.Component {
           this.props.loadUser(user);
           this.props.onRouteChange('home');
         } else {
-          ////
+          return alert('Check your Email or Password');
         }
       });
   };
@@ -67,7 +67,7 @@ class Signin extends React.Component {
                   </label>
                   <input
                     onChange={this.onPasswordChange}
-                    onKeyPress={this.onSubmitSignin}
+                    // onKeyPress={this.onSubmitSignin}
                     className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                     type="password"
                     name="password"

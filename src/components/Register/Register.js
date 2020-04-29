@@ -37,7 +37,9 @@ class Register extends React.Component {
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange('home');
-        } // else ... display text user already exist
+        } else {
+          return alert('This User is already exist in the system.');
+        }
       });
   };
 

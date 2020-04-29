@@ -15,7 +15,7 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
   } else if (isSignedIn === false && route === 'signin') {
     return (
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <p className="f2 fw6 ph0 mh0 white">Color Identify App</p>
+        <p className="f2 fw6 ph0 mh0 white">COLOR IDENTIFIER</p>
       </nav>
     );
   } else {

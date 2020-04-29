@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+  font-family:'Manrope', sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
