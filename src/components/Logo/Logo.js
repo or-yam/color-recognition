@@ -1,5 +1,4 @@
 import React from 'react';
-// import Tilt from 'react-tilt';
 import './Logo.css';
 import logo from './logo.png';
 const Logo = () => {
