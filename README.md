@@ -6,3 +6,6 @@
 #### Packages:
 * clarifai API
 * tachyons
+
+## View Live --> https://color-recognition-app.herokuapp.com/
+#### __Register__ with fake name/email or __Signin__ with name `joe@email.com` password `111`
