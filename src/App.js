@@ -139,6 +139,13 @@ class App extends Component {
             onRouteChange={this.onRouteChange}
           />
         )}
+        <footer className="f5 white">
+          Made with{' '}
+          <a className="blue" href="https://www.clarifai.com/">
+            Clarifai
+          </a>{' '}
+          api
+        </footer>
       </div>
     );
   }
