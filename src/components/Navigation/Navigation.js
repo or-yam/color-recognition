@@ -14,8 +14,11 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
     );
   } else if (isSignedIn === false && route === 'signin') {
     return (
-      <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <nav style={{ display: 'flex', justifyContent: 'flex-end', flexDirection:"column" }}>
         <p className="f2 fw6 ph0 mh0 white">COLOR IDENTIFIER</p>
+        <p className="f4 fw6 ph0 mh0 light-blue">This App will show density values for up to 8 dominant colors present in images.
+        <br></br>
+        Color predictions are returned in hex format.</p>
       </nav>
     );
   } else {

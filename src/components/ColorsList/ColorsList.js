@@ -11,7 +11,7 @@ const ColorsList = ({ colors }) => {
             demo={colors[i][0]}
             hex={`Hex- ${colors[i][0].toUpperCase()}`}
             name={`${colors[i][1].match(/[A-Z][a-z]+/g).join(' ')}`}
-            amount={`Amount- ${(colors[i][2] * 100).toFixed([2])}%`}
+            amount={`Density- ${(colors[i][2] * 100).toFixed([2])}%`}
           />
         );
       })}

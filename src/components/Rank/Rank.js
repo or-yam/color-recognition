@@ -11,6 +11,16 @@ const Rank = ({ name, entries }) => {
           Welcome
           <span className="white f2">{` ${capitalFirst(name)}`}</span>
           {` , You Are Ready To Start`}
+          <p>
+            For inspiration click{' '}
+            <a
+              className="f3 blue"
+              href="https://pixabay.com/images/search/colors/"
+              target="_blank"
+            >
+              here
+            </a>
+          </p>
         </div>
       </div>
     );

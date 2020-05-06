@@ -12,6 +12,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
             className="f4 pa2 w-80 center ba b--white"
             type="tex"
             onChange={onInputChange}
+            placeholder='Paste here the url'
           />
           <button
             className="w-20 grow f4 link ph3 pv2 dib white bg-green ba b--green"
