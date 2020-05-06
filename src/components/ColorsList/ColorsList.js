@@ -1,5 +1,10 @@
 import React from 'react';
 import Color from './Color';
+import {
+  calHexByColor,
+  calNameByColor,
+  calAmountByColor,
+} from '../Utilities/Utilities';
 
 const ColorsList = ({ colors }) => {
   return (
@@ -9,9 +14,9 @@ const ColorsList = ({ colors }) => {
           <Color
             key={i}
             demo={colors[i][0]}
-            hex={`Hex- ${colors[i][0].toUpperCase()}`}
-            name={`${colors[i][1].match(/[A-Z][a-z]+/g).join(' ')}`}
-            amount={`Density- ${(colors[i][2] * 100).toFixed([2])}%`}
+            hex={calHexByColor(colors[i][0])}
+            name={calNameByColor(colors[i][1])}
+            amount={calAmountByColor(colors[i][2])}
           />
         );
       })}
