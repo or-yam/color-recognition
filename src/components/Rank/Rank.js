@@ -17,6 +17,7 @@ const Rank = ({ name, entries }) => {
               className="f3 blue"
               href="https://pixabay.com/images/search/colors/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               here
             </a>

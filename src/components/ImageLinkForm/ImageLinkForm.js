@@ -12,7 +12,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
             className="f4 pa2 w-80 center ba b--white"
             type="tex"
             onChange={onInputChange}
-            placeholder='Paste here the url'
+            placeholder="Paste here the url"
           />
           <button
             className="w-20 grow f4 link ph3 pv2 dib white bg-green ba b--green"
@@ -22,6 +22,17 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
           </button>
         </div>
       </div>
+      <p className="white f5">
+        <a
+          className="blue"
+          href="https://loremflickr.com/320/240/color"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Click
+        </a>{' '}
+        to get a random image
+      </p>
     </div>
   );
 };
