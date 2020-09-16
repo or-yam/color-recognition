@@ -1,11 +1,27 @@
-# Color Recognition App - Front-End💻
-## This is my version of the final project in ZeroToMastery course.
-#### [Original ZTM Repo](https://github.com/aneagoie/smart-brain)
+# Color Recognition App 🎨
 
-### Build on React.Js
-#### Packages:
-* clarifai API
-* tachyons
+### Recognize colors and their amount from an image link
 
-## View Live --> https://color-recognition-app.herokuapp.com/
-#### __Register__ with fake name/email or __Signin__ with name `joe@email.com` password `111`
+## [Try It Here](https://color-recognition-app.herokuapp.com)
+
+### This is the client side repo for server side repo [click here](https://github.com/or-yam/color-recognition-backend)
+
+---
+
+### Tools and Libraries
+
+- Client Side - React, Tachyons (CSS Toolkit)
+- Server - NodeJs, Express, bcrypt, cors, knex
+- DataBase - PostgreSQL
+- External Services: [Clarifai API](https://www.clarifai.com/)
+
+---
+
+### To Do
+
+- [ ] Feature to copy color scheme in hex format
+- [ ] Enable users to save schemes
+
+### Screenshots
+
+## <p align="center"><img src="https://res.cloudinary.com/dnrxmm7a0/image/upload/v1600235047/projects/project3_w6vipq.jpg" width="300"> </p>
