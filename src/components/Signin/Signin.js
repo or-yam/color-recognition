@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Signin = ({ loadUser, onRouteChange }) => {
   const [signinEmail, setSigninEmail] = useState('');
@@ -8,7 +8,7 @@ const Signin = ({ loadUser, onRouteChange }) => {
     setSigninEmail(event.target.value);
   };
 
-  onPasswordChange = event => {
+  const onPasswordChange = event => {
     setSigninPassword(event.target.value);
   };
 

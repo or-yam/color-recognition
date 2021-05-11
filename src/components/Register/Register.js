@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Register = ({ loadUser, onRouteChange }) => {
   const [registerName, setRegisterName] = useState('');
