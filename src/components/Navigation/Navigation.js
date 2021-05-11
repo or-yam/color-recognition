@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Navigation = ({ onRouteChange, isSignedIn, route }) => {
-  if (isSignedIn && route === 'home') {
-    return (
+  {
+    isSignedIn && route === 'home' && (
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <p
           onClick={() => onRouteChange('signout')}
@@ -12,27 +12,31 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
         </p>
       </nav>
     );
-  } else if (isSignedIn === false && route === 'signin') {
-    return (
-      <nav style={{ display: 'flex', justifyContent: 'flex-end', flexDirection:"column" }}>
+  }
+
+  {
+    isSignedIn === false && route === 'signin' && (
+      <nav style={{ display: 'flex', justifyContent: 'flex-end', flexDirection: 'column' }}>
         <p className="f2 fw6 ph0 mh0 white">COLOR IDENTIFIER</p>
-        <p className="f4 fw6 ph0 mh0 light-blue">This App will show density values for up to 8 dominant colors present in images.
-        <br></br>
-        Color predictions are returned in hex format.</p>
-      </nav>
-    );
-  } else {
-    return (
-      <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <p
-          onClick={() => onRouteChange('signin')}
-          className="b ph3 pv2 input-reset ba b--black bg-blue grow pointer f5 dib br4 near-white f1"
-        >
-          Back To Sign In
+        <p className="f4 fw6 ph0 mh0 light-blue">
+          This App will show density values for up to 8 dominant colors present in images.
+          <br></br>
+          Color predictions are returned in hex format.
         </p>
       </nav>
     );
   }
+
+  return (
+    <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <p
+        onClick={() => onRouteChange('signin')}
+        className="b ph3 pv2 input-reset ba b--black bg-blue grow pointer f5 dib br4 near-white f1"
+      >
+        Back To Sign In
+      </p>
+    </nav>
+  );
 };
 
 export default Navigation;
