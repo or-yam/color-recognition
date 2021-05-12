@@ -6,7 +6,8 @@ const Register = ({ loadUser, onRouteChange }) => {
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
 
-  const onSubmitRegister = async () => {
+  const onSubmitRegister = async e => {
+    e.preventDefault();
     const user = await register(registerName, registerEmail, registerPassword);
     !user.id && alert('This User is already exist in the system.');
     loadUser(user);
@@ -14,7 +15,7 @@ const Register = ({ loadUser, onRouteChange }) => {
   };
 
   return (
-    <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+    <form onSubmit={onSubmitRegister} className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
         <div className="measure">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -26,9 +27,10 @@ const Register = ({ loadUser, onRouteChange }) => {
               <input
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 onChange={e => setRegisterName(e.target.value)}
-                type="email"
+                type="name"
                 name="name"
                 id="name"
+                required
               />
             </div>
             <div className="mt3">
@@ -41,6 +43,7 @@ const Register = ({ loadUser, onRouteChange }) => {
                 type="email"
                 name="email-address"
                 id="email-address"
+                required
               />
             </div>
             <div className="mv3">
@@ -53,20 +56,18 @@ const Register = ({ loadUser, onRouteChange }) => {
                 type="password"
                 name="password"
                 id="password"
+                required
               />
             </div>
           </fieldset>
-          <div className="">
-            <input
-              onClick={onSubmitRegister}
-              className="b ph3 pv2 input-reset ba b--black bg-green grow pointer f6 dib br4 near-white f1"
-              type="submit"
-              value="Submit And Sign-Up"
-            />
-          </div>
+          <input
+            className="b ph3 pv2 input-reset ba b--black bg-green grow pointer f6 dib br4 near-white f1"
+            type="submit"
+            value="Submit And Sign-Up"
+          />
         </div>
       </main>
-    </article>
+    </form>
   );
 };
 

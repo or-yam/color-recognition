@@ -5,15 +5,8 @@ const Signin = ({ loadUser, onRouteChange }) => {
   const [signinEmail, setSigninEmail] = useState('');
   const [signinPassword, setSigninPassword] = useState('');
 
-  const onEmailChange = event => {
-    setSigninEmail(event.target.value);
-  };
-
-  const onPasswordChange = event => {
-    setSigninPassword(event.target.value);
-  };
-
-  const onSubmitSignin = async () => {
+  const onSubmitSignin = async e => {
+    e.preventDefault();
     const user = await signin(signinEmail, signinPassword);
     !user.id && alert('Check your Email or Password');
     loadUser(user);
@@ -21,7 +14,7 @@ const Signin = ({ loadUser, onRouteChange }) => {
   };
 
   return (
-    <article className=" br4 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+    <form onSubmit={onSubmitSignin} className=" br4 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
         <div className="measure">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -31,11 +24,12 @@ const Signin = ({ loadUser, onRouteChange }) => {
                 Email
               </label>
               <input
-                onChange={onEmailChange}
+                onChange={e => setSigninEmail(e.target.value)}
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="email"
                 name="email-address"
                 id="email-address"
+                required
               />
             </div>
             <div className="mv3">
@@ -43,17 +37,17 @@ const Signin = ({ loadUser, onRouteChange }) => {
                 Password
               </label>
               <input
-                onChange={onPasswordChange}
+                onChange={e => setSigninPassword(e.target.value)}
                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="password"
                 name="password"
                 id="password"
+                required
               />
             </div>
           </fieldset>
           <div className="">
             <input
-              onClick={onSubmitSignin}
               className="b ph3 pv2 input-reset ba b--black bg-green grow pointer f6 dib br4 near-white f1"
               type="submit"
               value="Sign in"
@@ -70,7 +64,7 @@ const Signin = ({ loadUser, onRouteChange }) => {
           </div>
         </div>
       </main>
-    </article>
+    </form>
   );
 };
 

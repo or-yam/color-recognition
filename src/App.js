@@ -50,7 +50,8 @@ export default function AppFunc() {
     setColors(colors);
   };
 
-  const onButtonSubmit = async () => {
+  const onButtonSubmit = async e => {
+    e.preventDefault();
     setImageUrl(input);
     const colors = await getColorsFromUrl(input);
     if (colors) {
