@@ -7,3 +7,7 @@ export const getColorsFromUrl = async input =>
 
 export const increaseUserEntries = async id => (await axios.put(`${BASE_URL}image`, { id })).data;
 
+export const signin = async (email, password) => (await axios.post(`${BASE_URL}signin`, { email, password })).data;
+
+export const register = async (name, email, password) =>
+  (await axios.post(`${BASE_URL}register`, { name, email, password })).data;

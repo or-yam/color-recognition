@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { signin } from '../../api';
 
 const Signin = ({ loadUser, onRouteChange }) => {
   const [signinEmail, setSigninEmail] = useState('');
@@ -12,24 +13,11 @@ const Signin = ({ loadUser, onRouteChange }) => {
     setSigninPassword(event.target.value);
   };
 
-  const onSubmitSignin = () => {
-    fetch('https://rocky-savannah-60468.herokuapp.com/signin', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: signinEmail,
-        password: signinPassword
-      })
-    })
-      .then(response => response.json())
-      .then(user => {
-        if (user.id) {
-          loadUser(user);
-          onRouteChange('home');
-        } else {
-          return alert('Check your Email or Password');
-        }
-      });
+  const onSubmitSignin = async () => {
+    const user = await signin(signinEmail, signinPassword);
+    !user.id && alert('Check your Email or Password');
+    loadUser(user);
+    onRouteChange('home');
   };
 
   return (
