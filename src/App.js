@@ -7,6 +7,7 @@ import ColorRecognition from './components/ColorRecognition/ColorRecognition';
 import ColorsList from './components/ColorsList/ColorsList';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
+import { getColorsFromUrl, increaseUserEntries } from './api';
 import './App.css';
 
 export default function AppFunc() {
@@ -43,41 +44,20 @@ export default function AppFunc() {
     });
   };
 
-  const calculateColors = ({ outputs }) => outputs[0].data.colors.map(({ w3c, value }) => [w3c.hex, w3c.name, value]);
+  const calculateColors = colors => colors.map(({ w3c, value }) => [w3c.hex, w3c.name, value]);
 
   const displayColors = colors => {
     setColors(colors);
   };
 
-  const onButtonSubmit = () => {
+  const onButtonSubmit = async () => {
     setImageUrl(input);
-    fetch('https://rocky-savannah-60468.herokuapp.com/imageurl', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        input
-      })
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response) {
-          fetch('https://rocky-savannah-60468.herokuapp.com/image', {
-            method: 'put',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: user.id
-            })
-          })
-            .then(response => response.json())
-            .then(count => {
-              setUser({ ...user, entries: count });
-            })
-            .catch(console.log);
-        }
-
-        displayColors(calculateColors(response));
-      })
-      .catch(err => console.log(err));
+    const colors = await getColorsFromUrl(input);
+    if (colors) {
+      const entries = await increaseUserEntries(user.id);
+      setUser({ ...user, entries });
+      displayColors(calculateColors(colors));
+    }
   };
 
   const onInputChange = event => {
