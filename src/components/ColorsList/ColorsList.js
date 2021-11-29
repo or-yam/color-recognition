@@ -1,6 +1,6 @@
 import React from 'react';
 import Color from './Color';
-import { calHexByColor, calNameByColor, calAmountByColor } from '../Utilities/Utilities';
+import { calHexByColor, calNameByColor, calAmountByColor } from '../../Utilities/Utilities';
 
 const ColorsList = ({ colors }) => (
   <div>
