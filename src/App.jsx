@@ -7,6 +7,7 @@ import ColorRecognition from './components/ColorRecognition/ColorRecognition';
 import ColorsList from './components/ColorsList/ColorsList';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
+import Footer from './components/Footer/Footer';
 import { getColorsFromUrl, increaseUserEntries } from './api';
 import './App.css';
 
@@ -46,15 +47,11 @@ export default function AppFunc() {
 
   const calculateColors = colors => colors.map(({ w3c, value }) => [w3c.hex, w3c.name, value]);
 
-  const displayColors = colors => {
-    setColors(colors);
-  };
-
   const onButtonSubmit = async e => {
     e.preventDefault();
     setImageUrl(input);
     const colors = await getColorsFromUrl(input);
-    colors && displayColors(calculateColors(colors));
+    colors && setColors(calculateColors(colors));
     if (user.id) {
       const entries = await increaseUserEntries(user.id);
       setUser({ ...user, entries });
@@ -65,33 +62,29 @@ export default function AppFunc() {
     setInput(event.target.value);
   };
 
-  return (
-    <div className="App">
-      <div className="topBar ma4">
-        <Logo />
-        <Navigation isSignin={isSignin} onRouteChange={onRouteChange} route={route} />
-      </div>
-      {route === 'home' && (
+  const renderHomePage = () => (
+    <>
+      <Rank name={user.name || 'Guest'} entries={user.entries} />
+      <ImageLinkForm onInputChange={onInputChange} onButtonSubmit={onButtonSubmit} />
+      {imageUrl && (
         <div>
-          <Rank name={user.name || 'Guest'} entries={user.entries} />
-          <ImageLinkForm onInputChange={onInputChange} onButtonSubmit={onButtonSubmit} />
-          {imageUrl && (
-            <div>
-              <ColorRecognition imageUrl={imageUrl} />
-              <ColorsList colors={colors} />
-            </div>
-          )}
+          <ColorRecognition imageUrl={imageUrl} />
+          <ColorsList colors={colors} />
         </div>
       )}
+    </>
+  );
+
+  return (
+    <div className="App">
+      <header className="topBar ma4">
+        <Logo />
+        <Navigation isSignin={isSignin} onRouteChange={onRouteChange} route={route} />
+      </header>
+      {route === 'home' && renderHomePage()}
       {route === 'signin' && <Signin loadUser={loadUser} onRouteChange={onRouteChange} />}
       {route === 'register' && <Register loadUser={loadUser} onRouteChange={onRouteChange} />}
-      <footer className="f5 white">
-        Made with
-        <a className="blue" href="https://www.clarifai.com/">
-          Clarifai
-        </a>
-        api
-      </footer>
+      <Footer />
     </div>
   );
 }
