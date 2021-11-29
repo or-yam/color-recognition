@@ -64,7 +64,7 @@ export default function AppFunc() {
   const onInputChange = event => {
     setInput(event.target.value);
   };
-  console.log(colors);
+
   return (
     <div className="App">
       <div className="topBar ma4">

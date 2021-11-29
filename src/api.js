@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://rocky-savannah-60468.herokuapp.com/';
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const getColorsFromUrl = async input =>
   (await axios.post(`${BASE_URL}imageurl`, { input })).data.outputs[0].data.colors;
