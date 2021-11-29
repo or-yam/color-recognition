@@ -38,6 +38,7 @@ const Signin = ({ loadUser, onRouteChange }) => {
               </label>
               <input
                 onChange={e => setSigninPassword(e.target.value)}
+                autoComplete="password"
                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                 type="password"
                 name="password"
@@ -54,6 +55,13 @@ const Signin = ({ loadUser, onRouteChange }) => {
             />
           </div>
           <div className="lh-copy mt3">
+            <p
+              onClick={() => onRouteChange('home')}
+              href="#0"
+              className="b ph3 pv2 input-reset ba b--black bg-orange grow pointer f6 dib br4 near-white f1 "
+            >
+              Try as a Guest
+            </p>
             <p
               onClick={() => onRouteChange('register')}
               href="#0"

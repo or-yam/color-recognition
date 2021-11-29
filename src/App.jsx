@@ -12,7 +12,7 @@ import './App.css';
 
 export default function AppFunc() {
   const [user, setUser] = useState({
-    id: '0',
+    id: '',
     name: '',
     email: '',
     entries: 0,
@@ -54,17 +54,17 @@ export default function AppFunc() {
     e.preventDefault();
     setImageUrl(input);
     const colors = await getColorsFromUrl(input);
-    if (colors) {
+    colors && displayColors(calculateColors(colors));
+    if (user.id) {
       const entries = await increaseUserEntries(user.id);
       setUser({ ...user, entries });
-      displayColors(calculateColors(colors));
     }
   };
 
   const onInputChange = event => {
     setInput(event.target.value);
   };
-
+  console.log(colors);
   return (
     <div className="App">
       <div className="topBar ma4">
@@ -73,7 +73,7 @@ export default function AppFunc() {
       </div>
       {route === 'home' && (
         <div>
-          <Rank name={user.name} entries={user.entries} />
+          <Rank name={user.name || 'Guest'} entries={user.entries} />
           <ImageLinkForm onInputChange={onInputChange} onButtonSubmit={onButtonSubmit} />
           {imageUrl && (
             <div>

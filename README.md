@@ -10,6 +10,7 @@
 
 ### Tools and Libraries
 
+- Vite
 - Client Side - React, Tachyons (CSS Toolkit)
 - Server - NodeJs, Express, bcrypt, cors, knex
 - DataBase - PostgreSQL

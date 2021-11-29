@@ -16,7 +16,7 @@ module.exports = {
   rules: {
     'no-unused-expressions': 0,
     'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.jsx'] }],
     'react/forbid-prop-types': ['warn', { forbid: [] }],
     'react/jsx-props-no-spreading': 0,
     'comma-dangle': ['error', 'never'],
