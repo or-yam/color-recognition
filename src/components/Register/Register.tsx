@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { register } from '../../api';
 
-const Register = ({ loadUser, onRouteChange }) => {
+const Register = ({ loadUser, onRouteChange }: Props) => {
   const [registerName, setRegisterName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
 
-  const onSubmitRegister = async e => {
+  const onSubmitRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     const user = await register(registerName, registerEmail, registerPassword);
     !user.id && alert('This User is already exist in the system.');
@@ -72,3 +72,8 @@ const Register = ({ loadUser, onRouteChange }) => {
 };
 
 export default Register;
+
+type Props = {
+  loadUser: Function;
+  onRouteChange: Function;
+};

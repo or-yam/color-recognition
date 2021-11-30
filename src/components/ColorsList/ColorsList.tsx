@@ -1,8 +1,8 @@
-import React from 'react';
 import Color from './Color';
+import { ColorType } from '../../interfaces/Colors';
 import { calHexByColor, calNameByColor, calAmountByColor } from '../../Utilities/Utilities';
 
-const ColorsList = ({ colors }) => (
+const ColorsList = ({ colors }: { colors: string[] }) => (
   <div>
     {colors.map(([hex, name, amount], i) => (
       <Color
@@ -17,3 +17,4 @@ const ColorsList = ({ colors }) => (
 );
 
 export default ColorsList;
+

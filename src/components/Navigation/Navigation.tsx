@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Navigation = ({ onRouteChange, isSignedIn, route }) => {
+const Navigation = ({ onRouteChange, isSignedIn, route }: Props) => {
   {
     isSignedIn && route === 'home' && (
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -40,3 +38,9 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
 };
 
 export default Navigation;
+
+type Props = {
+  onRouteChange: (route: string) => void;
+  isSignedIn: boolean;
+  route: string;
+};

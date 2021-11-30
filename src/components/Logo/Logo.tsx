@@ -1,6 +1,6 @@
-import React from 'react';
 import './Logo.css';
 import logo from './logo.png';
+
 const Logo = () => (
   <div
     className="pa0"

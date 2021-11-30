@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Color = ({ hex, name, amount, demo }) => (
+const Color = ({ hex, name, amount, demo }: ColorProps) => (
   <div className="tc bg-white dib br3 pa3 ma2 grow bw2 shadow-5 ">
     <div className=" w3 h3 center br3 shadow-4" style={{ backgroundColor: demo }}></div>
     <div>
@@ -12,3 +10,10 @@ const Color = ({ hex, name, amount, demo }) => (
 );
 
 export default Color;
+
+type ColorProps = {
+  hex: string;
+  name: string;
+  amount: string;
+  demo: string;
+};

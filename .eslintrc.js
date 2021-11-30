@@ -5,21 +5,24 @@ module.exports = {
     jest: true
   },
   extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 12,
+    ecmaVersion: 13,
     sourceType: 'module'
   },
-  plugins: ['react'],
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'no-unused-expressions': 0,
     'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-    'react/jsx-filename-extension': [1, { extensions: ['.jsx'] }],
     'react/forbid-prop-types': ['warn', { forbid: [] }],
     'react/jsx-props-no-spreading': 0,
     'comma-dangle': ['error', 'never'],
-    'no-console': ['warn', { allow: ['warn', 'error', 'info'] }]
+    'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
+    'arrow-parens': ['error', 'as-needed'],
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'react/react-in-jsx-scope': 'off'
   }
 };
