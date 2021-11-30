@@ -1,7 +1,7 @@
 import './Logo.css';
 import logo from './logo.png';
 
-const Logo = function () {
+function Logo() {
   return (
     <div
       className="pa0"
@@ -20,6 +20,6 @@ const Logo = function () {
       </div>
     </div>
   );
-};
+}
 
 export default Logo;

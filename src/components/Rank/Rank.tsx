@@ -1,4 +1,4 @@
-const Rank = function ({ name, entries }: Props) {
+function Rank({ name, entries }: Props) {
   const capitalFirst = (str: string): string => str[0].toUpperCase() + str.slice(1);
 
   if (!entries) {
@@ -31,7 +31,7 @@ const Rank = function ({ name, entries }: Props) {
       <div className="white f2">{`${entries} Images !`}</div>
     </>
   );
-};
+}
 
 export default Rank;
 

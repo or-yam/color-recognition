@@ -1,12 +1,12 @@
 import Color from './Color';
 import { calHexByColor, calNameByColor, calAmountByColor } from '../../Utilities/Utilities';
 
-const ColorsList = function ({ colors }: { colors: [string, string, number][] }) {
+function ColorsList({ colors }: { colors: [string, string, number][] }) {
   return (
     <div>
-      {colors.map(([hex, name, amount], i) => (
+      {colors.map(([hex, name, amount]) => (
         <Color
-          key={i}
+          key={`${amount}-${hex}`}
           demo={hex}
           hex={calHexByColor(hex)}
           name={calNameByColor(name)}
@@ -15,6 +15,6 @@ const ColorsList = function ({ colors }: { colors: [string, string, number][] })
       ))}
     </div>
   );
-};
+}
 
 export default ColorsList;

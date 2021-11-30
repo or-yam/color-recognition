@@ -1,6 +1,7 @@
+import React from 'react';
 import './ImageLinkForm.css';
 
-const ImageLinkForm = function ({ onInputChange, onButtonSubmit }: Props) {
+function ImageLinkForm({ onInputChange, onButtonSubmit }: Props) {
   return (
     <form onSubmit={onButtonSubmit}>
       <p className="f3 white">Entre here an Image URL, And it will identify the colors in it</p>
@@ -25,7 +26,7 @@ const ImageLinkForm = function ({ onInputChange, onButtonSubmit }: Props) {
       </p>
     </form>
   );
-};
+}
 
 export default ImageLinkForm;
 

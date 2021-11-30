@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signin } from '../../api';
 
-const Signin = function ({ loadUser, onRouteChange }: Props) {
+function Signin({ loadUser, onRouteChange }: Props) {
   const [signinEmail, setSigninEmail] = useState('');
   const [signinPassword, setSigninPassword] = useState('');
 
@@ -22,29 +22,29 @@ const Signin = function ({ loadUser, onRouteChange }: Props) {
             <div className="mt3">
               <label className="db fw6 lh-copy f6 near-white" htmlFor="email-address">
                 Email
+                <input
+                  onChange={e => setSigninEmail(e.target.value)}
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  type="email"
+                  name="email-address"
+                  id="email-address"
+                  required
+                />
               </label>
-              <input
-                onChange={e => setSigninEmail(e.target.value)}
-                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                type="email"
-                name="email-address"
-                id="email-address"
-                required
-              />
             </div>
             <div className="mv3">
               <label className="db fw6 lh-copy f6 white" htmlFor="password">
                 Password
+                <input
+                  onChange={e => setSigninPassword(e.target.value)}
+                  autoComplete="password"
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
+                />
               </label>
-              <input
-                onChange={e => setSigninPassword(e.target.value)}
-                autoComplete="password"
-                className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                type="password"
-                name="password"
-                id="password"
-                required
-              />
             </div>
           </fieldset>
           <div className="">
@@ -55,24 +55,26 @@ const Signin = function ({ loadUser, onRouteChange }: Props) {
             />
           </div>
           <div className="lh-copy mt3">
-            <p
+            <button
+              type="button"
               onClick={() => onRouteChange('home')}
               className="b ph3 pv2 input-reset ba b--black bg-orange grow pointer f6 dib br4 near-white f1 "
             >
               Try as a Guest
-            </p>
-            <p
+            </button>
+            <button
+              type="button"
               onClick={() => onRouteChange('register')}
               className="b ph3 pv2 input-reset ba b--black bg-blue grow pointer f6 dib br4 near-white f1 "
             >
               Register As New User
-            </p>
+            </button>
           </div>
         </div>
       </main>
     </form>
   );
-};
+}
 
 export default Signin;
 

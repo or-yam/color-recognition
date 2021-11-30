@@ -1,4 +1,4 @@
-const Color = function ({ hex, name, amount, demo }: ColorProps) {
+function Color({ hex, name, amount, demo }: ColorProps) {
   return (
     <div className="tc bg-white dib br3 pa3 ma2 grow bw2 shadow-5 ">
       <div className=" w3 h3 center br3 shadow-4" style={{ backgroundColor: demo }} />
@@ -9,7 +9,7 @@ const Color = function ({ hex, name, amount, demo }: ColorProps) {
       </div>
     </div>
   );
-};
+}
 
 export default Color;
 

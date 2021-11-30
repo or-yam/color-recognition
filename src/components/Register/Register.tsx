@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { register } from '../../api';
 
-const Register = function ({ loadUser, onRouteChange }: Props) {
+function Register({ loadUser, onRouteChange }: Props) {
   const [registerName, setRegisterName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
@@ -23,41 +23,41 @@ const Register = function ({ loadUser, onRouteChange }: Props) {
             <div className="mt3">
               <label className="db fw6 lh-copy f6 near-white" htmlFor="name">
                 Name
+                <input
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  onChange={e => setRegisterName(e.target.value)}
+                  type="name"
+                  name="name"
+                  id="name"
+                  required
+                />
               </label>
-              <input
-                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                onChange={e => setRegisterName(e.target.value)}
-                type="name"
-                name="name"
-                id="name"
-                required
-              />
             </div>
             <div className="mt3">
               <label className="db fw6 lh-copy f6 near-white" htmlFor="email-address">
                 Email
+                <input
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  onChange={e => setRegisterEmail(e.target.value)}
+                  type="email"
+                  name="email-address"
+                  id="email-address"
+                  required
+                />
               </label>
-              <input
-                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                onChange={e => setRegisterEmail(e.target.value)}
-                type="email"
-                name="email-address"
-                id="email-address"
-                required
-              />
             </div>
             <div className="mv3">
               <label className="db fw6 lh-copy f6 white" htmlFor="password">
                 Password
+                <input
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  onChange={e => setRegisterPassword(e.target.value)}
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
+                />
               </label>
-              <input
-                className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                onChange={e => setRegisterPassword(e.target.value)}
-                type="password"
-                name="password"
-                id="password"
-                required
-              />
             </div>
           </fieldset>
           <input
@@ -69,7 +69,7 @@ const Register = function ({ loadUser, onRouteChange }: Props) {
       </main>
     </form>
   );
-};
+}
 
 export default Register;
 

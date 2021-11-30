@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { User } from './interfaces/User';
 import { RawColorType } from './interfaces/Colors';
 import Logo from './components/Logo/Logo';
@@ -13,7 +13,7 @@ import Footer from './components/Footer/Footer';
 import { getColorsFromUrl, increaseUserEntries } from './api';
 import './App.css';
 
-export default function AppFunc() {
+export default function App() {
   const [user, setUser] = useState({
     id: '',
     name: '',
@@ -27,30 +27,30 @@ export default function AppFunc() {
   const [isSignin, setIsSignin] = useState(false);
   const [route, setRoute] = useState('signin');
 
-  const onRouteChange = (route: string) => {
-    if (route === 'signout') {
+  const onRouteChange = (nextRoute: string) => {
+    if (nextRoute === 'signout') {
       setRoute('signin');
     }
-    if (route === 'home') {
+    if (nextRoute === 'home') {
       setIsSignin(true);
     }
-    setRoute(route);
+    setRoute(nextRoute);
   };
 
-  const loadUser = (user: User) => {
-    setUser(user);
+  const loadUser = (updatedUser: User) => {
+    setUser(updatedUser);
   };
 
-  const calculateColors = (colors: [RawColorType]): [string, string, number][] => {
-    const calculated = colors.map(({ w3c, value }): [string, string, number] => [w3c.hex, w3c.name, value]);
+  const calculateColors = (rawColors: [RawColorType]): [string, string, number][] => {
+    const calculated = rawColors.map(({ w3c, value }): [string, string, number] => [w3c.hex, w3c.name, value]);
     return calculated;
   };
 
   const onButtonSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setImageUrl(input);
-    const colors = await getColorsFromUrl(input);
-    const colorsList = calculateColors(colors);
+    const imageRawColors = await getColorsFromUrl(input);
+    const colorsList = calculateColors(imageRawColors);
     setColors(colorsList);
     if (user.id) {
       const entries = await increaseUserEntries(user.id);

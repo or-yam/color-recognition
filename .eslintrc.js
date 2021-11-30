@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     jest: true
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
+  extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'plugin:import/typescript'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -23,6 +23,26 @@ module.exports = {
     'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
     'arrow-parens': ['error', 'as-needed'],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    'react/function-component-definition': [2, { namedComponents: 'function-declaration' }],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
+    ],
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error', { typedefs: false, ignoreTypeReferences: true }]
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
   }
 };
