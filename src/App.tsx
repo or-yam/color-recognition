@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { User } from './interfaces/User';
+import { RawColorType } from './interfaces/Colors';
 import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
 import Rank from './components/Rank/Rank';
@@ -17,15 +19,15 @@ export default function AppFunc() {
     name: '',
     email: '',
     entries: 0,
-    joined: ''
+    joined: new Date()
   });
   const [input, setInput] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useState<[string, string, number][]>([]);
   const [isSignin, setIsSignin] = useState(false);
   const [route, setRoute] = useState('signin');
 
-  const onRouteChange = route => {
+  const onRouteChange = (route: string) => {
     if (route === 'signout') {
       setRoute('signin');
     }
@@ -35,31 +37,29 @@ export default function AppFunc() {
     setRoute(route);
   };
 
-  const loadUser = ({ id, name, email, entries, joined }) => {
-    setUser({
-      id,
-      name,
-      email,
-      entries,
-      joined
-    });
+  const loadUser = (user: User) => {
+    setUser(user);
   };
 
-  const calculateColors = colors => colors.map(({ w3c, value }) => [w3c.hex, w3c.name, value]);
+  const calculateColors = (colors: [RawColorType]): [string, string, number][] => {
+    const calculated = colors.map(({ w3c, value }): [string, string, number] => [w3c.hex, w3c.name, value]);
+    return calculated;
+  };
 
-  const onButtonSubmit = async e => {
+  const onButtonSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setImageUrl(input);
     const colors = await getColorsFromUrl(input);
-    colors && setColors(calculateColors(colors));
+    const colorsList = calculateColors(colors);
+    setColors(colorsList);
     if (user.id) {
       const entries = await increaseUserEntries(user.id);
       setUser({ ...user, entries });
     }
   };
 
-  const onInputChange = event => {
-    setInput(event.target.value);
+  const onInputChange: React.ChangeEventHandler<HTMLInputElement> = e => {
+    setInput(e.target.value);
   };
 
   const renderHomePage = () => (
@@ -79,7 +79,7 @@ export default function AppFunc() {
     <div className="App">
       <header className="topBar ma4">
         <Logo />
-        <Navigation isSignin={isSignin} onRouteChange={onRouteChange} route={route} />
+        <Navigation isSignedIn={isSignin} onRouteChange={onRouteChange} route={route} />
       </header>
       {route === 'home' && renderHomePage()}
       {route === 'signin' && <Signin loadUser={loadUser} onRouteChange={onRouteChange} />}

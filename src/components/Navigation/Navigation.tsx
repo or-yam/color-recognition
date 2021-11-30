@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Navigation = ({ onRouteChange, isSignedIn, route }) => {
+const Navigation = function ({ onRouteChange, isSignedIn, route }: Props) {
   {
     isSignedIn && route === 'home' && (
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -20,7 +18,7 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
         <p className="f2 fw6 ph0 mh0 white">COLOR IDENTIFIER</p>
         <p className="f4 fw6 ph0 mh0 light-blue">
           This App will show density values for up to 8 dominant colors present in images.
-          <br></br>
+          <br />
           Color predictions are returned in hex format.
         </p>
       </nav>
@@ -40,3 +38,9 @@ const Navigation = ({ onRouteChange, isSignedIn, route }) => {
 };
 
 export default Navigation;
+
+type Props = {
+  onRouteChange: (route: string) => void;
+  isSignedIn: boolean;
+  route: string;
+};

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { signin } from '../../api';
 
-const Signin = ({ loadUser, onRouteChange }) => {
+const Signin = function ({ loadUser, onRouteChange }: Props) {
   const [signinEmail, setSigninEmail] = useState('');
   const [signinPassword, setSigninPassword] = useState('');
 
-  const onSubmitSignin = async e => {
+  const onSubmitSignin = async (e: React.FormEvent) => {
     e.preventDefault();
     const user = await signin(signinEmail, signinPassword);
     !user.id && alert('Check your Email or Password');
@@ -57,14 +57,12 @@ const Signin = ({ loadUser, onRouteChange }) => {
           <div className="lh-copy mt3">
             <p
               onClick={() => onRouteChange('home')}
-              href="#0"
               className="b ph3 pv2 input-reset ba b--black bg-orange grow pointer f6 dib br4 near-white f1 "
             >
               Try as a Guest
             </p>
             <p
               onClick={() => onRouteChange('register')}
-              href="#0"
               className="b ph3 pv2 input-reset ba b--black bg-blue grow pointer f6 dib br4 near-white f1 "
             >
               Register As New User
@@ -77,3 +75,8 @@ const Signin = ({ loadUser, onRouteChange }) => {
 };
 
 export default Signin;
+
+type Props = {
+  loadUser: (user: any) => void;
+  onRouteChange: (route: string) => void;
+};

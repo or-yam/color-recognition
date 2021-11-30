@@ -1,9 +1,7 @@
-import React from 'react';
+const Rank = function ({ name, entries }: Props) {
+  const capitalFirst = (str: string): string => str[0].toUpperCase() + str.slice(1);
 
-const Rank = ({ name, entries }) => {
-  const capitalFirst = str => str[0].toUpperCase() + str.slice(1);
-
-  if (entries === '0') {
+  if (!entries) {
     return (
       <div className="white f3">
         Welcome
@@ -36,3 +34,8 @@ const Rank = ({ name, entries }) => {
 };
 
 export default Rank;
+
+type Props = {
+  name: string;
+  entries: number;
+};
