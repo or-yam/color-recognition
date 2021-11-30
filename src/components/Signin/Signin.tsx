@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signin } from '../../api';
 
-const Signin = ({ loadUser, onRouteChange }: Props) => {
+const Signin = function ({ loadUser, onRouteChange }: Props) {
   const [signinEmail, setSigninEmail] = useState('');
   const [signinPassword, setSigninPassword] = useState('');
 

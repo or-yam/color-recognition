@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { register } from '../../api';
 
-const Register = ({ loadUser, onRouteChange }: Props) => {
+const Register = function ({ loadUser, onRouteChange }: Props) {
   const [registerName, setRegisterName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');

@@ -1,4 +1,4 @@
-const Rank = ({ name, entries }: Props) => {
+const Rank = function ({ name, entries }: Props) {
   const capitalFirst = (str: string): string => str[0].toUpperCase() + str.slice(1);
 
   if (!entries) {
