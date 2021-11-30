@@ -1,8 +1,7 @@
 import Color from './Color';
-import { ColorType } from '../../interfaces/Colors';
 import { calHexByColor, calNameByColor, calAmountByColor } from '../../Utilities/Utilities';
 
-const ColorsList = function ({ colors }: { colors: string[] }) {
+const ColorsList = function ({ colors }: { colors: [string, string, number][] }) {
   return (
     <div>
       {colors.map(([hex, name, amount], i) => (
