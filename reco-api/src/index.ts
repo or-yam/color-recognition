@@ -1,19 +1,11 @@
 import express from 'express';
 import bcrypt from 'bcrypt-nodejs';
 import cors from 'cors';
-import knex from 'knex';
+import db from './db';
 import { handleRegister } from './controllers/register';
 import { handleSignin } from './controllers/signin';
 import { handleEntries, handleApiCall } from './controllers/entries';
 import { handleUserId } from './controllers/userid';
-
-const db = knex({
-  client: 'pg',
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: true
-  }
-});
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 

@@ -1,4 +1,7 @@
-const handleUserId = (req, res, db) => {
+import { Request, Response } from 'express';
+import { Knex } from 'knex';
+
+export const handleUserId = (req: Request, res: Response, db: Knex) => {
   const { id } = req.params;
 
   db.select('*')
@@ -14,8 +17,4 @@ const handleUserId = (req, res, db) => {
       }
     })
     .catch(err => res.status(400).json('Error getting user'));
-};
-
-module.exports = {
-  handleUserId: handleUserId
 };

@@ -1,4 +1,7 @@
-const handleSignin = (req, res, db, bcrypt) => {
+import { Knex } from 'knex';
+import { Request, Response } from 'express';
+
+export const handleSignin = (req: Request, res: Response, db: Knex, bcrypt) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -24,8 +27,4 @@ const handleSignin = (req, res, db, bcrypt) => {
       }
     })
     .catch(err => res.status(400).json('wrong email or password'));
-};
-
-module.exports = {
-  handleSignin: handleSignin
 };
