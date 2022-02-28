@@ -1,8 +1,8 @@
 # Color Recognition App 🎨
 
-### Recognize colors and their amount from an image link
+## Recognize colors and their amount from an image link
 
-## [Try It Here](https://color-recognition-app.herokuapp.com)
+### [Try It Here](color-recognition.oryam.me)
 
 ### This is the client side repo for server side repo [click here](https://github.com/or-yam/color-recognition-backend)
 
